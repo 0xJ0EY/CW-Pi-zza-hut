@@ -67,16 +67,16 @@ class Audio:
 
         return
 
-    # Play audio on crossroad (Has to wait for first part to be finished)
-    def play_crossroad(self, location):
+    # Play audio on crossroad
+    def play_crossroad_intro(self):
         music = self.pygame.mixer.Sound("music/crossroad_to.wav")
         self.channel_1.play(music)
-        time.sleep(1)
+        return
 
-        self.channel_1.play(self.get_location(location))
-        time.sleep(1)
-
-
+    # Play audio on when leaving
+    def play_crossroad_outro(self, location):
+        music = self.pygame.mixer.Sound(self.get_location(location))
+        self.channel_1.play(music)
         return
 
 

@@ -103,7 +103,7 @@ class Sensor:
         sideways_steps = 1700
 
         # Play crossroad audio
-        self.car.audio.play_crossroad(direction)
+        self.car.audio.play_crossroad_intro()
 
         # Ride to the middle of the crossroad
         for i in range(0, self.threeway_middle):
@@ -114,6 +114,10 @@ class Sensor:
         if direction == CrossroadRotation.FORWARD or direction == CrossroadRotation.NONE:
             print("Crossroad: Forward")
             for i in range(0, forward_steps):
+
+                # Play audio of the direction
+                if (i == forward_steps - 1): self.car.audio.play_crossroad_outro(direction)
+
                 self.car.wheel_controller.move_forward()
                 # Set lights
                 self.car.lights.set_lights(LightState.ON)
@@ -122,6 +126,10 @@ class Sensor:
         elif direction == CrossroadRotation.LEFT:
             print("Crossroad: Left")
             for i in range(0, sideways_steps):
+
+                # Play audio of the direction
+                if (i == forward_steps - 1): self.car.audio.play_crossroad_outro(direction)
+
                 self.car.wheel_controller.move_hard_left()
                 # Set lights
                 self.car.lights.set_lights(LightState.BLINK_LEFT)
@@ -131,6 +139,10 @@ class Sensor:
         elif direction == CrossroadRotation.RIGHT:
             print("Crossroad: Right")
             for i in range(0, sideways_steps):
+
+                # Play audio of the direction
+                if (i == forward_steps - 1): self.car.audio.play_crossroad_outro(direction)
+
                 self.car.wheel_controller.move_hard_right()
                 # Set lights
                 self.car.lights.set_lights(LightState.BLINK_RIGHT)
