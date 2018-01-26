@@ -49,8 +49,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-# Venv folder
-venv/
-
 # Idea folder
 .idea/
